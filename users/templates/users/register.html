@@ -1,0 +1,23 @@
+{% extends 'generic.html' %}
+{% block content %}
+
+<section class="section">
+        <div class="container">
+            <div class="row justify__content__center">
+                    <h1 class="sign__up__title">Добро пожаловать, на страницу регистрации</h1>
+                    <form action="{% url 'users:register' %}" method="post" class="sign__up__block">
+                        {% csrf_token %}
+                        {% for f in form %}
+                        <p><label class="sign__label" for="{{ f.id_for_label }}">{{f.label}}:</label>{{ f }}</p>
+                        <div class="sign__label">{{ f.errors }}</div>
+                        {% endfor %}
+                        <button class="sign__next" type="submit">Регистрация</button>
+
+
+                    </form>
+            </div>
+        </div>
+    </section>
+
+
+{% endblock %}

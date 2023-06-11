@@ -1,0 +1,51 @@
+{% extends 'generic.html' %}
+
+{% block content %}
+
+<section class="section__forms">
+		<div class="container">
+			<div class="row">
+				<h1 class="person__add">Добавить анкету врача</h1>
+                <form action="{% url 'add_user' %}" method="post">
+                    {% csrf_token %}
+
+					<div class="col-12 block__name">
+						<label class="form__txt" for="{{ form.name.id_for_label }}">Полное имя</label>
+						{{ form.name }}
+					</div>
+
+
+					<div class="row">
+						<div class="col-6">
+							<label class="form__txt" for="{{ form.email.id_for_label }}">email адрес</label>
+                            {{ form.email }}
+
+							<label class="form__txt" for="{{ form.speciality.id_for_label}}">Специальность</label>
+							{{form.speciality}}
+
+						</div>
+						<div class="col-6">
+							<div class="row">
+								<div class="col-5">{{form.gender}}</div>
+								<div class="form__avatar__2 col-7">
+                           				{{ form.avatar }}
+									<label class="avatar__label" for="{{ form.avatar.id_for_label }}">
+										Выберите изображение
+									</label>
+                            	</div>
+							</div>
+
+							<label class="form__txt" for="{{ form.phone.id_for_label }}">Номер телефона</label>
+                            {{ form.phone }}
+						</div>
+                        <button type="submit" class="add__doctor">Добавить</button>
+
+                    </form>
+					</div>
+			</div>
+		</div>
+	</section>
+
+{% endblock %}
+
+

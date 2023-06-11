@@ -1,0 +1,36 @@
+{% extends 'generic.html' %}
+{% block content %}
+{% load static %}
+
+                    <div class="row">
+                        <div class="dash__menu col-12 justify__content__center">
+                            <h1 class="dash__title">Добро пожаловать на панель управления</h1>
+                            <p class="dash__mail">clinic/ivhayo@gmail.com</p>
+                            <a class="dash__block__btn" href="{% url 'add_user' %}">
+                                <div class="dash__block">
+                                    <img class="dash__logo" src="{% static 'img/dash/admin.svg' %}" alt="">
+                                    <div class="dash__block__item col-8">
+                                        <h2 class="dash__block__title">Добавьте анкеты</h2>
+                                        <h3 class="dash__block__subtitle">Создавайте средства управления для пациентов. Когда вы дадите им тарифный план, они появятся на вашем сайте!</h3>
+                                    </div>
+                                </div>
+                            </a>
+                            <a class="dash__block__btn" href="#">
+                                <div class="dash__block">
+                                    <img class="dash__logo" src="{%static 'img/dash/admin.svg' %}" alt="">
+                                    <div class="dash__block__item col-8">
+                                        <h2 class="dash__block__title">Выберете филиал</h2>
+                                        <h3 class="dash__block__subtitle">Подбор специалистов по вашим жалобам</h3>
+                                    </div>
+                                </div>
+                            </a>
+
+
+                        </div>
+                    </div>
+
+
+
+
+
+{% endblock %}

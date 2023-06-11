@@ -1,0 +1,24 @@
+{% extends 'generic.html' %}
+{% block content %}
+
+<section class="section">
+        <div class="container">
+            <div class="row justify__content__center">
+                    <h1 class="sign__up__title">Добро пожаловать, на страницу авторизации</h1>
+                    <form action="{% url 'users:login' %}" method="post" class="sign__up__block__2">
+                        {% csrf_token %}
+                        <div class="form-error">{{ form.non_field_errors }}</div>
+                        {% for i in form %}
+                        <p><label class="sign__label" for="{{ i.id_for_label }}">{{i.label}}:</label>{{ i }}</p>
+                        <div class="sign__label">{{ i.errors }}</div>
+                        {% endfor %}
+                        <button class="sign__next" type="submit">Войти</button>
+
+
+                    </form>
+            </div>
+        </div>
+    </section>
+
+
+{% endblock %}

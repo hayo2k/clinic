@@ -1,0 +1,57 @@
+{% extends 'generic.html' %}
+{% block content %}
+{% load static %}
+
+
+<section class="section__about">
+		<div class="container">
+			{% for f in forms %}
+			<div class="row about__content">
+				<div class="col-7 row about__block">
+					<img class="about__img col-8" src="{{ f.avatar.url }}"/>
+					<div class="row">
+						<h1 class="about__name col-12">{{ f.name }}</h1>
+						<h2 class="about__pro col-12">{{ f.speciality }}</h2>
+					</div>
+					<ul class="about__contacts">
+						<li class="about__item"><a href=""><img src="{% static 'img/forms/about/1.svg' %}"/></a></li>
+						<li class="about__item"><a href=""><img src="{% static 'img/forms/about/2.svg' %}"/></a></li>
+						<li class="about__item"><a href=""><img src="{% static 'img/forms/about/3.svg' %}"/></a></li>
+					</ul>
+
+				</div>
+
+
+
+				<div class="col-5 row about__block">
+					<h1 class="about__title"></h1>
+					<p class="about__txt">
+						{{ f.about }}
+					 </p>
+
+					 <div class="row">
+						<div class="col-3">
+							<h1 class="about__data">Age</h1>
+							<p class="about__value">{{ f.age }}</p>
+						</div>
+						<div class="col-3">
+							<h1 class="about__data">Gender</h1>
+							<p class="about__value">{{ f.gender }}</p>
+						</div>
+						 <div class="col-6">
+							<h1 class="about__data">Phone</h1>
+							<p class="about__value">{{ f.phone }}</p>
+						</div>
+					 </div>
+
+
+				</div>
+
+			</div>
+
+			{% endfor %}
+		</div>
+	</section>
+
+
+{% endblock %}

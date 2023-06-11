@@ -1,0 +1,64 @@
+{% extends 'generic.html' %}
+{% block content %}
+{% load static %}
+
+<div class="container">
+        <div class="row">
+            <div class="col-7">
+                <h1 class="person__add">Профиль</h1>
+                <div class="col-12">
+                    <img width="100" height="100"
+                         src="{% if user.image %} {{ user.image.url }} {% else %} {% static 'img/forms/about/default_avatar.jpg' %} {% endif %}"
+                         class="img__profile">
+                </div>
+                <form action="{% url 'users:profile'  %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-6">
+                            <label class="profile__label" for="{{ form.name.id_for_label }}">Имя пользователя</label>
+                            {{ form.name }}
+                        </div>
+                        <div class="col-6">
+                            <label class="profile__label" for="{{ form.username.id_for_label }}">Логин</label>
+                            {{ form.username }}
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form__avatar">
+                            {{ form.image }}
+                                <label class="avatar__label" for="{{ form.image.id_for_label }}">
+                                    Выберите изображение
+                                </label>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <label class="profile__label" for="{{ form.email.id_for_label }}">
+                                Адрес электронной почты
+                            </label>
+                            {{ form.email }}
+                        </div>
+                        <div class="col-6">
+                            <label class="profile__label" for="{{ form.phone.id_for_label }}">Номер телефона</label>
+                            {{ form.phone }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <input class="sign__next" type="submit" value="Сохранить">
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="col-5">
+                {% include 'catalog/baskets.html' %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

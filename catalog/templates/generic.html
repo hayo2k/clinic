@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link href="{% static 'css/main.css' %}" rel="stylesheet"/>
+    <link href="{% static 'css/setka.css' %}" rel="stylesheet"/>
+    <link href="{% static 'css/reset.css' %}" rel="stylesheet"/>
+    {% block title %}
+    <title>{{ title }}</title>
+    {% endblock %}
+</head>
+<body>
+    <section class="dashboard">
+        <div class="container">
+            <div class="row">
+                {% block mainmenu %}
+                <div class="dash__col">
+                    <div class="dash__sidebar">
+                        <img class="sidebar__logo" src="{% static 'img/dash/dash_logo.svg' %}">
+                        <h2 class="sidebar__txt">Клиника 'Нова клиник'</h2>
+                        <hr class="sidebar__line">
+
+                        <ul class="sidebar__list">
+                    {% for m in menu %}
+                            {% if not forloop.last %}
+                            <li class="sidebar__item"><a class="sidebar__link" href="{% url m.url_name %}">{{m.title}}</a></li>
+                            {% else %}
+                            <li class="sidebar__item"><a class="sidebar__link" href="{% url m.url_name %}">{{m.title}}</a></li>
+                            {% endif %}
+
+                    {% endfor %}
+                            {% if request.user.is_authenticated %}
+                            <li class="sidebar__item"><a class="sidebar__link" href="{% url 'users:profile'  %}">Профиль</a></li>
+                            {% endif %}
+
+
+
+
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+                <div class="col-9 dash__9">
+                    <div class="row dash__header justify__content__between">
+                        <p class="dash__header__txt col-auto">
+                            Learn how to launch
+                            faster<br> watch our webinar
+                            for tips from our experts and get a
+                            limited time offer.
+                        </p>
+                        <div class="row dash__btn col-auto">
+                            <a class="header__link" href="#"><img class="dash__header__image" src="{% static 'img/dash/bell.svg' %}" alt="bell"/></a>
+                            {% if user.is_authenticated %}
+                            {{ user.username }} | <a class="dash__login" href="{% url 'users:logout' %}">Выйти</a>
+                            {% else %}
+                            <a class="dash__logout" href="{% url 'users:register' %}">Регистрация</a>
+                            <a class="dash__login" href="{% url 'users:login' %}">Войти</a>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    {% endblock mainmenu %}
+                    {% block content %} {% endblock %}
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+<script src="{% static 'vendor/fontawesome/fontawesome-icons.js' %}" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+{% extends 'generic.html' %}
+{% block content %}
+{% load static %}
+
+
+<section class="section__analysis">
+		<div class="container">
+			{% for product in products %}
+			<div class="row justify__content__between analisys__block">
+
+				<div class="col-9">
+					<h1 class="analysis__title">{{ product.name }}</h1>
+					<p class="analysis__txt">{{ product.description }}</p>
+
+				</div>
+
+
+                <div class="col-3">
+					<p class="price">{{ product.price }}</p>
+					<a class="price__add" href="{% url 'basket_add' product.id %}">В корзину</a>
+
+				</div>
+
+
+
+
+			</div>
+			{% endfor %}
+
+			{% include 'pagination.html' %}
+
+		</div>
+	</section>
+
+
+
+{% endblock %}
